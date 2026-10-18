@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dscrkpkmu263y"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_bullet"]
+[ext_resource type="Texture2D" path="res://assets/player_bullet.png" id="2_bullet_tex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bullet"]
+size = Vector2(6, 6)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_bullet")
+speed = 280.0
+damage = 1
+target_group = "enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bullet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bullet_tex")
+
+[node name="Notifier" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-4, -4, 8, 8)

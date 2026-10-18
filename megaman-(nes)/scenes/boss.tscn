@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://s26hcftx5ab5"]
+
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_boss"]
+[ext_resource type="Texture2D" path="res://assets/pickelman.png" id="2_pickelman"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="3_health"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_boss"]
+size = Vector2(30, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp1"]
+atlas = ExtResource("2_pickelman")
+region = Rect2(0, 0, 32, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp2"]
+atlas = ExtResource("2_pickelman")
+region = Rect2(34, 0, 26, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp3"]
+atlas = ExtResource("2_pickelman")
+region = Rect2(66, 0, 23, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bp4"]
+atlas = ExtResource("2_pickelman")
+region = Rect2(125, 0, 23, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_boss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp3")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp2")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bosshitbox"]
+size = Vector2(32, 36)
+
+[node name="Boss" type="CharacterBody2D"]
+script = ExtResource("1_boss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_boss")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_boss")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-18, -4)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_bosshitbox")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_health")
+max_health = 20
