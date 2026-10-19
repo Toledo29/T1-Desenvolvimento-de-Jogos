@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dh604o8vadgd1"
+path="res://.godot/imported/06. Bomb Man.mp3-ee7663f974d9afaed9d7ed9fb27519bd.mp3str"
+
+[deps]
+
+source_file="res://assets/06. Bomb Man.mp3"
+dest_files=["res://.godot/imported/06. Bomb Man.mp3-ee7663f974d9afaed9d7ed9fb27519bd.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

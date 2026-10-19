@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://v1rbivrpenb5" path="res://scenes/enemy.tscn" id="8_enemy"]
 [ext_resource type="PackedScene" uid="uid://s26hcftx5ab5" path="res://scenes/boss.tscn" id="9_boss"]
 [ext_resource type="Texture2D" uid="uid://hj0djksa26ho" path="res://assets/energy_bars.png" id="10_bars"]
+[ext_resource type="AudioStream" uid="uid://dh604o8vadgd1" path="res://assets/06. Bomb Man.mp3" id="11_2os1m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bswci"]
 texture = ExtResource("1_014kd")
@@ -237,3 +238,8 @@ theme_override_font_sizes/font_size = 10
 text = "VITÓRIA!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1913481500]
+stream = ExtResource("11_2os1m")
+volume_db = -20.0
+autoplay = true
