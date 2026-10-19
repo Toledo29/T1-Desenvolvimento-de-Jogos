@@ -1,4 +1,3 @@
-# player.gd
 extends CharacterBody2D
 
 const SPEED: float = 100.0
@@ -18,7 +17,6 @@ var _dead: bool = false
 func _ready() -> void:
 	add_to_group("player")
 	_muzzle_offset_x = abs(muzzle.position.x)
-	# Os sprites originais olham para a esquerda, então flip_h = true quando olha para a direita
 	sprite.flip_h = (facing > 0)
 	sprite.play("idle")
 	health.died.connect(_on_died)
@@ -38,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Pulo (Mega Man permite soltar o botão para pulo mais curto)
+	# Pulo
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	elif Input.is_action_just_released("jump") and velocity.y < -80.0:
@@ -79,7 +77,6 @@ func take_damage(amount: int) -> void:
 	if _dead or _invuln_timer > 0.0:
 		return
 	_invuln_timer = INVULN_DURATION
-	# Pequeno recuo ao tomar dano (knockback clássico)
 	velocity.y = -120.0
 	velocity.x = -facing * 60.0
 	health.take_damage(amount)

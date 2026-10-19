@@ -1,5 +1,3 @@
-# enemy.gd
-# Inimigo posicionado no cenário (Pickelman menor): patrulha a plataforma e arremessa picaretas iguais às do chefe.
 extends CharacterBody2D
 
 @export var speed: float = 45.0
@@ -45,7 +43,6 @@ func _physics_process(delta: float) -> void:
 		sprite.flip_h = (_dir > 0)
 		muzzle.position.x = abs(muzzle.position.x) * _dir
 
-	# Dispara o mesmo projétil do chefe (picareta giratória) quando o jogador está próximo
 	if _player == null or not is_instance_valid(_player):
 		_player = get_tree().get_first_node_in_group("player")
 

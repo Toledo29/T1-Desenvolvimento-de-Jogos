@@ -1,5 +1,3 @@
-# boss.gd
-# Chefe no final da fase (3ª tela - Pickelman Gigante): salta, persegue o jogador e arremessa picaretas.
 extends CharacterBody2D
 
 @export var move_speed: float = 70.0
@@ -44,7 +42,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	if _active and _player != null:
-		# Os sprites do Pickelman olham para a esquerda por padrão
 		_facing = 1 if _player.global_position.x > global_position.x else -1
 		sprite.flip_h = (_facing > 0)
 		muzzle.position.x = abs(muzzle.position.x) * _facing

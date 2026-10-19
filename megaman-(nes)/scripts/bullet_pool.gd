@@ -1,9 +1,7 @@
-# bullet_pool.gd
-# Anexe a um Node2D chamado "BulletPool" na cena da fase (filho do nível, não do jogador).
 extends Node2D
 
 @export var bullet_scene: PackedScene
-@export var pool_size: int = 3          # Megaman original: no máximo 3 tiros na tela
+@export var pool_size: int = 3
 
 var _pool: Array[Node] = []
 
