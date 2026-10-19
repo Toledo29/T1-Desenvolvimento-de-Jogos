@@ -1,6 +1,3 @@
-# bullet.gd
-# Cena bullet.tscn: Area2D (raiz, com este script) + CollisionShape2D + Sprite2D
-# + VisibleOnScreenNotifier2D (nome: Notifier)
 extends Area2D
 
 signal returned(bullet)
@@ -37,7 +34,6 @@ func deactivate() -> void:
 func _physics_process(delta: float) -> void:
 	global_position.x += _dir * speed * delta
 
-# Colidiu com parede (TileMapLayer) ou corpo (inimigo/jogador CharacterBody2D)
 func _on_body_entered(body: Node) -> void:
 	if not _active:
 		return
@@ -50,7 +46,6 @@ func _on_body_entered(body: Node) -> void:
 		body.take_damage(damage)
 	deactivate()
 
-# Colidiu com Area2D (ex.: hurtbox de inimigo/chefe)
 func _on_area_entered(area: Area2D) -> void:
 	if not _active:
 		return
