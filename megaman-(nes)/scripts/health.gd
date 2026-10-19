@@ -1,5 +1,3 @@
-# health.gd
-# Componente reutilizável: adicione como Node filho do jogador, inimigos e chefe.
 class_name Health
 extends Node
 
